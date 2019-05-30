@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from . import db
 
 
 def create_app(test_config=None):
@@ -28,5 +29,10 @@ def create_app(test_config=None):
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
+
+    #import and call the registration functions of (close_db and init_db_command)
+
+    db.init_app(app)
+
 
     return app
