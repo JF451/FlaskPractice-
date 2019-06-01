@@ -2,6 +2,7 @@ import os
 
 from flask import Flask
 from . import db
+from . import auth
 
 
 def create_app(test_config=None):
@@ -33,6 +34,14 @@ def create_app(test_config=None):
     #import and call the registration functions of (close_db and init_db_command)
 
     db.init_app(app)
+
+    #Importing and registering the blueprint from factory
+
+
+    app.register_blueprint(auth.bp)
+
+    #blueprint will have views to register for new users 
+    #to log into and out of 
 
 
     return app
